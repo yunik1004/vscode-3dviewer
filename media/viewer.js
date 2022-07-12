@@ -176,13 +176,19 @@ function onProgress(xhr) {
 }
 
 function loadModel() {
-    if(modelLoader instanceof THREE.OBJLoader) {            
-        new THREE.MTLLoader().load(userSettings.fileToLoad.replace('.obj', '.mtl'), materials => {
+    if(modelLoader instanceof THREE.OBJLoader) {
+        let baseurl = userSettings.fileToLoad.substring(0, userSettings.fileToLoad.lastIndexOf('/') + 1);
+        let objname = userSettings.fileToLoad.split("/").pop();
+
+        mtlloader = new THREE.MTLLoader();
+        mtlloader.setPath(baseurl);
+
+        mtlloader.load(objname.replace('.obj', '.mtl'), materials => {
             modelLoader.setMaterials(materials);
 
             loadModelFile();
         }, _ => {  // Assume no .mtl file
-            loadModelFile();
+            //loadModelFile();  // It raise an error
         });
     }else{
         loadModelFile();
