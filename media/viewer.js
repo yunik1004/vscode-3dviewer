@@ -182,6 +182,7 @@ function loadModel() {
 
         mtlloader = new THREE.MTLLoader();
         mtlloader.setPath(baseurl);
+        mtlloader.setCrossOrigin(true);
 
         mtlloader.load(objname.replace('.obj', '.mtl'), materials => {
             modelLoader.setMaterials(materials);
