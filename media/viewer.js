@@ -185,6 +185,7 @@ function loadModel() {
         mtlloader.setCrossOrigin(true);
 
         mtlloader.load(objname.replace('.obj', '.mtl'), materials => {
+            materials.side = THREE.DoubleSide;
             modelLoader.setMaterials(materials);
 
             loadModelFile();
@@ -319,7 +320,7 @@ function render() {
 }
 
 function generateMaterials(useEnvCube) {
-    const path = 'textures/cube/Bridge2/';
+    const path = 'textures/cube/MilkyWay/';
     const urls = [
         path + 'px.jpg', path + 'nx.jpg',
         path + 'py.jpg', path + 'ny.jpg',
