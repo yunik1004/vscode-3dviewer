@@ -190,7 +190,7 @@ function loadModel() {
 
             loadModelFile();
         }, _ => {  // Assume no .mtl file
-            //loadModelFile();  // It raise an error
+            loadModelFile();  // It raise an error
         });
     }else{
         loadModelFile();
@@ -347,42 +347,42 @@ function generateMaterials(useEnvCube) {
         },
         'chrome':
         {
-            m: new THREE.MeshLambertMaterial({ color: 0xffffff, envMap: reflectionCube }),
+            m: new THREE.MeshLambertMaterial({ color: 0xffffff, envMap: reflectionCube, side : THREE.DoubleSide }),
             h: 0, s: 0, l: 1
         },
         'liquid':
         {
-            m: new THREE.MeshLambertMaterial({ color: 0xffffff, envMap: refractionCube, refractionRatio: 0.85 }),
+            m: new THREE.MeshLambertMaterial({ color: 0xffffff, envMap: refractionCube, refractionRatio: 0.85, side : THREE.DoubleSide }),
             h: 0, s: 0, l: 1
         },
         'shiny':
         {
-            m: new THREE.MeshStandardMaterial({ color: 0x550000, envMap: reflectionCube, roughness: 0.1, metalness: 1.0 }),
+            m: new THREE.MeshStandardMaterial({ color: 0x550000, envMap: reflectionCube, roughness: 0.1, metalness: 1.0, side : THREE.DoubleSide }),
             h: 0, s: 0.8, l: 0.2
         },
         'matte':
         {
-            m: new THREE.MeshPhongMaterial({ color: 0x000000, specular: 0x111111, shininess: 1 }),
+            m: new THREE.MeshPhongMaterial({ color: 0x000000, specular: 0x111111, shininess: 1, side : THREE.DoubleSide }),
             h: 0, s: 0, l: 1
         },
         'flat':
         {
-            m: new THREE.MeshPhongMaterial({ color: 0x000000, specular: 0x111111, shininess: 1, flatShading: true }),
+            m: new THREE.MeshPhongMaterial({ color: 0x000000, specular: 0x111111, shininess: 1, flatShading: true, side : THREE.DoubleSide }),
             h: 0, s: 0, l: 1
         },
         'textured':
         {
-            m: new THREE.MeshPhongMaterial({ color: 0xffffff, specular: 0x111111, shininess: 1, map: texture }),
+            m: new THREE.MeshPhongMaterial({ color: 0xffffff, specular: 0x111111, shininess: 1, map: texture, side : THREE.DoubleSide }),
             h: 0, s: 0, l: 1
         },
         'colors':
         {
-            m: new THREE.MeshPhongMaterial({ color: 0xffffff, specular: 0xffffff, shininess: 2, vertexColors: THREE.VertexColors }),
+            m: new THREE.MeshPhongMaterial({ color: 0xffffff, specular: 0xffffff, shininess: 2, vertexColors: THREE.VertexColors, side : THREE.DoubleSide }),
             h: 0, s: 0, l: 1
         },
         'plastic':
         {
-            m: new THREE.MeshPhongMaterial({ color: 0x000000, specular: 0x888888, shininess: 250 }),
+            m: new THREE.MeshPhongMaterial({ color: 0x000000, specular: 0x888888, shininess: 250, side : THREE.DoubleSide }),
             h: 0.6, s: 0.8, l: 0.1
         }
     }
